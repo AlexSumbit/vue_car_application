@@ -9,8 +9,54 @@
         <title>Car Application</title>
     </head>
     <body>
-        
+        <div class="container pt-5">
+            <div class="row mb-3">
+                <div class="col">
+                    <h1>Car Application</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="search">Find your car</label>
+                        <input type="text" class="form-control" id="search" placeholder="Search">
+                    </div>
+
+                    <hr>
+
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-item-action pointer">Audi</li>
+                        <li class="list-group-item list-group-item-action pointer">BMW</li>
+                        <li class="list-group-item list-group-item-action pointer">Mercedes</li>
+                    </ul>
+                </div>
+
+                <div class="col-md-8 pt-4">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <h2>Bmw</h2>
+                            <img src="images/bmw.png" alt="" class="rounded detailed-car-image">
+                        </div>
+                        <div class="col-md-5 pt-3">
+                            <h5>Car details</h5>
+
+                            <ul>
+                                <li>Model - <strong>BMW 6 серии Gran Turismo</strong></li>
+                                <li>Year - <strong>2014</strong></li>
+                                <li>Owner - <strong>Alexander</strong></li>
+                            </ul>
+
+                            <p>+38 037 022 43 21</p>
+
+                            <button class="btn btn-outline-success mr-3">Show phone</button>
+                            <button class="btn btn-primary">Buy</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <script src="ja/app.js"></script>
+        <script src="js/app.js"></script>
     </body>
 </html>
