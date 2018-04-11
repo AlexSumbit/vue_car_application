@@ -1,0 +1,15 @@
+{
+    "name": "Car-application",
+    "version": "0.0.1",
+    "author": "Alexander Domansky",
+    "scripts": {
+        "start": "gulp"
+    },
+    "devDependencies": {
+        "gulp": "^3.9.1",
+        "browser-sync": "^2.23.6",
+        "gulp-autoprefixer": "^5.0.0",
+        "gulp-sass": "^4.0.1",
+        "gulp-sourcemaps": "^2.6.4"
+    }
+}
