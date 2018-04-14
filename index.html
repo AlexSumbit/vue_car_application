@@ -9,7 +9,7 @@
         <title>Car Application</title>
     </head>
     <body>
-        <div class="container pt-5">
+        <div class="container pt-5" id="app">
             <div class="row mb-3">
                 <div class="col">
                     <h1>Car Application</h1>
@@ -19,36 +19,53 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="search">Find your car</label>
-                        <input type="text" class="form-control" id="search" placeholder="Search">
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            id="search" 
+                            placeholder="Search"
+                            v-model="search"
+                        >
                     </div>
 
                     <hr>
 
                     <ul class="list-group">
-                        <li class="list-group-item list-group-item-action pointer">Audi</li>
-                        <li class="list-group-item list-group-item-action pointer">BMW</li>
-                        <li class="list-group-item list-group-item-action pointer">Mercedes</li>
+                        <li 
+                            v-for="(car, index) in filteredCars"
+                            v-on:click="selectCar(index)"
+                            v-bind:class="{'active': index == selectedCar}"
+                            class="list-group-item list-group-item-action pointer"
+                        >
+                            {{car.name}} - {{car.model}}
+                        </li>
                     </ul>
                 </div>
 
                 <div class="col-md-8 pt-4">
                     <div class="row">
                         <div class="col-md-7">
-                            <h2>Bmw</h2>
-                            <img src="images/bmw.png" alt="" class="rounded detailed-car-image">
+                            <h2>{{car.name}} - {{car.model}}</h2>
+                            <img :src="car.image" :alt="car.model" class="rounded detailed-car-image">
                         </div>
                         <div class="col-md-5 pt-3">
                             <h5>Car details</h5>
 
                             <ul>
-                                <li>Model - <strong>BMW 6 серии Gran Turismo</strong></li>
-                                <li>Year - <strong>2014</strong></li>
-                                <li>Owner - <strong>Alexander</strong></li>
+                                <li>Model - <strong>{{car.model}}</strong></li>
+                                <li>Year - <strong>{{car.year}}</strong></li>
+                                <li>Owner - <strong>{{car.owner}}</strong></li>
                             </ul>
 
-                            <p>+38 037 022 43 21</p>
+                            <div class="phone-block">
+                                <p v-if="phoneVisibility">{{car.phone}}</p>
+                            </div>
 
-                            <button class="btn btn-outline-success mr-3">Show phone</button>
+                            <button class="btn btn-outline-success" 
+                                    v-on:click="phoneVisibility = !phoneVisibility"
+                                    v-text="phoneBtnLabel"
+                                >
+                            </button>
                             <button class="btn btn-primary">Buy</button>
                         </div>
                     </div>
@@ -56,7 +73,7 @@
             </div>
         </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
         <script src="js/app.js"></script>
     </body>
 </html>
