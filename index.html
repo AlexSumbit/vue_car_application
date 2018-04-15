@@ -81,7 +81,7 @@
                 <div class="col-md-12">
                     <ul class="list-group">
                         <li
-                            v-for="log in logs"
+                            v-for="log in logs.slice().reverse()"
                             class="list-group-item"
                             v-bind:class="{
                                 'list-group-item-secondary': log.type === 'cnl',
