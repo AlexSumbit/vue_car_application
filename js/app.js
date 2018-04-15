@@ -1,3 +1,5 @@
+const log = (text, type, date = new Date()) => ({text, type, date});
+
 const cars = [
     {name: "Ford", model: "Focus", owner: "Richard", year: 2016, phone: "+38 037 022 43 21", image: "https://www.cstatic-images.com/car-pictures/xl/usc60foc123b021001.png"},
     {name: "BMW", model: "5 Series", owner: "Alexander", year: 2017, phone: "+38 037 022 43 21", image: "https://www.bmwusa.com/content/dam/bmwusa/5Series/Sedan/2018/BMW_MY18_5Series_DP_Design_01.png"},
@@ -14,18 +16,32 @@ new Vue({
         selectedCar: 0,
         phoneVisibility: false,
         search: "",
-        modalVisibility: false
+        modalVisibility: false,
+        logs: []
     },
     methods: {
         selectCar: function(index) {
             this.phoneVisibility = false;
             this.car = this.cars[index];
             this.selectedCar = index;
+        },
+        newOrder: function() {
+            this.modalVisibility = false;
+            this.logs.push(
+                log(`Success order ${this.car.name} ${this.car.model}`, 'ok')
+            );
+        },
+        cancelOrder: function() {
+            this.modalVisibility = false;
+            this.logs.push(
+                log(`Cancelled order ${this.car.name} ${this.car.model}`, 'cnl')
+            );
         }
     },
     computed: {
         phoneBtnLabel() {
             return this.phoneVisibility ? "Hide phone" : "Show phone";
+            
         },
         filteredCars() {
             let self = this;
@@ -37,6 +53,11 @@ new Vue({
             });
 
             return filtered;
+        }
+    },
+    filters: {
+        date: function(value) {
+            return value.toLocaleString();
         }
     }
 });
